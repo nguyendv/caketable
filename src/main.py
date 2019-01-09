@@ -8,7 +8,7 @@ memory. Therefor, this file heavily utilizes the iterator protocol:
 """
 
 import click, csv, sys, os
-from src.writers import StdoutWriter, MarkdownWriter
+from src.writers import MarkdownWriter
 
 
 def extension(fileobject):
@@ -43,16 +43,15 @@ def get_writer(fileobject):
 @click.command()
 @click.argument('infile', type=click.File('r'))
 @click.argument('outfile', type=click.File('w'))
-@click.option('--stdout', help='Also print the output content to std', type=bool, default=False)
+@click.option('--stdout', help='Also print the output content to std', is_flag=True, default=False)
 def caketable(infile,  outfile, stdout):
     rows = get_reader(infile)
     writer = get_writer(outfile)
-    stdwriter = StdoutWriter() if stdout else None
+    if stdout:
+        writer.stdout = True
 
     for row in rows:
         writer.write(row)
-        if stdwriter:
-            stdwriter.write(row)
 
 
 if __name__ == '__main__':

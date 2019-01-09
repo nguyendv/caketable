@@ -1,16 +1,15 @@
-import csv
-
-class StdoutWriter:
-    def write(self, row):
-        """ :row: a list of string"""
-        sys.stdout.write(row + '\n')
+import csv, sys
 
 
 class MarkdownWriter:
     def __init__(self, fileobject):
         self.f = fileobject
+        self.stdout = False
 
     def write(self, row):
         """ :row: a list of string"""
-        self.f.write('|' + '|'.join(row) + '|' + '\n')
+        line = '|' + '|'.join(row) + '|' + '\n'
+        if self.stdout:
+            sys.stdout.write(line)
+        self.f.write(line)
         

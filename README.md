@@ -8,6 +8,6 @@ TODO
 caketable input.csv output.md
 
 # You can also write the output into stdout
-caketable input.csv --output-type md
+caketable input.csv output.md --stdout
 ```
 
