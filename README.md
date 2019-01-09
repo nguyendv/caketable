@@ -1,7 +1,13 @@
-Transform csv data into Markdown table. Ultimately, `pancake` could be able to tranform between any table format.
+Long time to go, but my goal is make `caketable` be able to tranform between any table format.
 
 ## Installation
 TODO
+
+## Transformations supported
+-[x] csv to Markdown table
+-[ ] Markdown table to csv
+
+You can request for new transformation by creating new issue. Pull Requests are definitely welcome!
 
 ## Usage
 ```bash
